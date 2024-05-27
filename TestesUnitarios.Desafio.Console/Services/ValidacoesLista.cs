@@ -1,33 +1,61 @@
+using System.Collections.Generic;
+
 namespace TestesUnitarios.Desafio.Console.Services
 {
     public class ValidacoesLista
     {
         public List<int> RemoverNumerosNegativos(List<int> lista)
         {
-            var listaSemNegativos = lista.Where(x => x > 0);
-            return listaSemNegativos.ToList();
+            var resultado = new List<int>();
+            foreach (var numero in lista)
+            {
+                if (numero >= 0)
+                {
+                    resultado.Add(numero);
+                }
+            }
+            return resultado;
         }
 
         public bool ListaContemDeterminadoNumero(List<int> lista, int numero)
         {
-            var contem = lista.Contains(numero);
-            return contem;
+            return lista.Contains(numero);
         }
 
-        public List<int> MultiplicarNumerosLista(List<int> lista, int numero)
+        public List<int> MultiplicarElementosPorDois(List<int> lista)
         {
-            var listaMultiplicada = lista.Select(x => x * numero).ToList();
-            return listaMultiplicada;
+            var resultado = new List<int>();
+            foreach (var item in lista)
+            {
+                resultado.Add(item * 2);
+            }
+            return resultado;
         }
 
         public int RetornarMaiorNumeroLista(List<int> lista)
         {
-            return lista.Max();
+            int max = int.MinValue;
+            foreach (var numero in lista)
+            {
+                if (numero > max)
+                {
+                    max = numero;
+                }
+            }
+            return max;
         }
 
         public int RetornarMenorNumeroLista(List<int> lista)
         {
-            return lista.Min();
+            int min = int.MaxValue;
+            foreach (var numero in lista)
+            {
+                if (numero < min)
+                {
+                    min = numero;
+                }
+            }
+            return min;
         }
     }
 }
